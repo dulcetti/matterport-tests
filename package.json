@@ -1,0 +1,39 @@
+{
+  "name": "matterport-tests",
+  "description": "Tests with Matterport 3D viewwer",
+  "version": "1.0.0",
+  "author": "Bruno Dulcetti <brunodulcetti@gmail.com>",
+  "scripts": {
+    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "start": "http-server -a localhost src/"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "commitizen": "^4.1.2",
+    "prettier": "2.0.5"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "keywords": [
+    "matterport"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dulcetti/matterport-tests"
+  },
+  "bugs": {
+    "url": "https://github.com/dulcetti/matterport-tests/issues"
+  }
+}
