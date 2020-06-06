@@ -5,13 +5,22 @@
   "author": "Bruno Dulcetti <brunodulcetti@gmail.com>",
   "scripts": {
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "start": "http-server -a localhost src/"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
     "commitizen": "^4.1.2",
     "prettier": "2.0.5"
   },
@@ -35,5 +44,17 @@
   },
   "bugs": {
     "url": "https://github.com/dulcetti/matterport-tests/issues"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
