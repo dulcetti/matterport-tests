@@ -1,7 +1,12 @@
 {
+  "background_color": "#046A2E",
+  "display": "minimal-ui",
   "name": "Matterport - Bruno Dulcetti",
   "short_name": "Matterport",
-  "icons": [{
+  "start_url": "/",
+  "theme_color": "#046A2E",
+  "icons": [
+    {
       "src": "favicon.ico",
       "sizes": "16x16",
       "type": "image/x-icon"
@@ -16,9 +21,5 @@
       "type": "image/png",
       "sizes": "512x512"
     }
-  ],
-  "start_url": "/",
-  "background_color": "#046A2E",
-  "theme_color": "#046A2E",
-  "display": "minimal-ui",
+  ]
 }
