@@ -13,7 +13,9 @@
   "dependencies": {
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "styled-components": "^5.1.1",
+    "styled-media-query": "^2.1.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
@@ -21,6 +23,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "babel-plugin-styled-components": "^1.10.7",
     "commitizen": "^4.1.2",
     "prettier": "2.0.5"
   },
