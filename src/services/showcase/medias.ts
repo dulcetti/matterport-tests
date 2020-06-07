@@ -29,4 +29,19 @@ export const paramsMedia = [
       type: 'mattertag.media.video',
     },
   },
+  {
+    anchorPosition: { x: 2.6, y: 1.7, z: 1.25 },
+    stemVector: { x: -6.5, y: -0.2, z: 0.4 },
+    color: {
+      r: 1,
+      g: 0.5,
+      b: 0,
+    },
+    description: 'Minha foto de bicicleta',
+    label: 'Meme etílico',
+    media: {
+      src: 'https://www.brunodulcetti.com/assets/images/meme-etilico.jpg',
+      type: 'mattertag.media.photo',
+    },
+  },
 ];

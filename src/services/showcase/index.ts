@@ -7,7 +7,6 @@ export const loaderShowcase = (iframe: HTMLIFrameElement) => {
   const key = 'c6518f79da3d4dcaa185916fb6b8041e';
 
   const _getShowcase = (result: IMatterportShowcase) => {
-    console.info(result);
     iframe.removeEventListener('load', loaderShowcase);
     showcase = result;
     showcase.Model.getData().then(loadedSpaceHandler);
@@ -21,7 +20,6 @@ export const loaderShowcase = (iframe: HTMLIFrameElement) => {
 };
 
 export const walking = (direction: string) => {
-  console.info(showcase);
   return showcase.Camera.moveInDirection(direction).then(_returnMessage).catch(_returnError);
 };
 
