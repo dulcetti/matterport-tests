@@ -6,26 +6,7 @@ import * as S from './styles';
 export default function App(props) {
   const loaderShowcase = (iframe) => {
     console.info(iframe);
-    // const key = 'c6518f79da3d4dcaa185916fb6b8041e';
-    // iframe_matterport.addEventListener('load', loaderShowcase, false);
-
-    // try {
-    //   window.MP_SDK.connect(iframe_matterport, key, '3.2')
-    //     .then((result) => {
-    //       iframe_matterport.removeEventListener('load', loaderShowcase);
-    //       return result;
-    //     })
-    //     .catch((error) => {
-    //       console.error(error);
-    //     });
-    // } catch (error) {
-    //   console.error(error);
-    //   throw new Error(error);
-    // }
   };
-  // const iframe_matterport = document.getElementById('tests-matterport');
-  // iframe_matterport.addEventListener('load', loaderShowcase, false);
-  // console.info(iframe_matterport);
   const iframeRef = React.createRef();
   const showcase = loaderShowcase(iframeRef);
   console.info(iframeRef);
@@ -43,6 +24,39 @@ export default function App(props) {
         src="https://my.matterport.com/show?m=SxQL3iGyoDo&play=1"
         title="tests-matterport"
         width="853"></S.MatterportIframe>
+
+      <hr />
+
+      <h2>Direcionamento</h2>
+      <div>
+        <button class="buttons arrows" data-directions="LEFT" id="left">
+          &lArr;
+        </button>
+        <button class="buttons arrows" data-directions="FORWARD" id="up">
+          &uArr;
+        </button>
+        <button class="buttons arrows" data-directions="BACK" id="down">
+          &dArr;
+        </button>
+        <button class="buttons arrows" data-directions="RIGHT" id="right">
+          &rArr;
+        </button>
+      </div>
+
+      <div>
+        <button class="buttons rotations" data-x="-15" data-y="0" id="left">
+          &#10553;
+        </button>
+        <button class="buttons rotations" data-x="15" data-y="0" id="right">
+          &#10552;
+        </button>
+        <button class="buttons rotations" data-x="0" data-y="15" id="up">
+          &#10555;
+        </button>
+        <button class="buttons rotations" data-x="0" data-y="-15" id="down">
+          &#10554;
+        </button>
+      </div>
     </S.MainWrapper>
   );
 }
