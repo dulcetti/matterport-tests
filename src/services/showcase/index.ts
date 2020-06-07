@@ -36,10 +36,6 @@ const _returnError = (error: string) => {
 };
 
 function loadedSpaceHandler() {
-  // maxX = 0;
-  // maxY = 0;
-  // minX = 0;
-  // minY = 0;
   createMedia();
 }
 
