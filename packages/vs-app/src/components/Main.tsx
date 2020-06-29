@@ -1,6 +1,18 @@
 import React, { Component } from 'react';
-import { Frame, GetSDK, initComponents, SceneComponent, ISceneNode, ComponentInteractionType,
-  orientedBoxType, slotType, OrientedBox, IComponentEventSpy, IInteractionEvent, sdkKey } from '@mp/common';
+import {
+  Frame,
+  GetSDK,
+  initComponents,
+  SceneComponent,
+  ISceneNode,
+  ComponentInteractionType,
+  orientedBoxType,
+  slotType,
+  OrientedBox,
+  IComponentEventSpy,
+  IInteractionEvent,
+  sdkKey,
+} from '@mp/common';
 import { AppState } from '../AppState';
 import { SceneLoader } from '../SceneLoader';
 import { ItemList } from './ItemList';
@@ -18,7 +30,7 @@ interface Props {
 }
 
 interface State {
-  slotNode: SlotNode|null;
+  slotNode: SlotNode | null;
 }
 
 type SlotNode = {
@@ -26,7 +38,7 @@ type SlotNode = {
   slotComponent: SceneComponent;
   modelComponent: SceneComponent;
   boxComponent: OrientedBox;
-}
+};
 
 export class Main extends Component<Props, State> {
   private sdk: any = null;
@@ -53,7 +65,6 @@ export class Main extends Component<Props, State> {
       renderer.shadowMap.enabled = true;
       renderer.shadowMap.bias = 0.0001;
       renderer.shadowMap.type = three.PCFSoftShadowMap;
-
     });
     await initComponents(this.sdk);
     this.scene = new SceneLoader(this.sdk);
@@ -62,9 +73,13 @@ export class Main extends Component<Props, State> {
 
     class InteractionHandler implements IComponentEventSpy<IInteractionEvent> {
       public eventType = ComponentInteractionType.CLICK;
-      constructor(private mainComponent: Main){}
+      constructor(private mainComponent: Main) {}
       onEvent(payload: IInteractionEvent) {
-        this.mainComponent.handleOrientedBoxInteraction(payload.node, payload.component, payload.type);
+        this.mainComponent.handleOrientedBoxInteraction(
+          payload.node,
+          payload.component,
+          payload.type
+        );
       }
     }
 
@@ -77,11 +92,9 @@ export class Main extends Component<Props, State> {
       for (const component of componentIterator) {
         if (component.componentType === slotType) {
           slot = component;
-        }
-        else if (component.componentType === 'mp.gltfLoader') {
+        } else if (component.componentType === 'mp.gltfLoader') {
           model = component;
-        }
-        else if (component.componentType == orientedBoxType) {
+        } else if (component.componentType == orientedBoxType) {
           box = component as OrientedBox;
           box.spyOnEvent(handler);
           box.inputs.color = UnselectedColor;
@@ -95,12 +108,12 @@ export class Main extends Component<Props, State> {
           slotComponent: slot,
           modelComponent: model,
           boxComponent: box,
-        })
+        });
       }
     };
 
     this.slots = slots;
-    await this.scene.load('AAWs9eZ9ip6', findSlots);
+    await this.scene.load('2dsQsoWwAEK', findSlots);
 
     console.log(this.scene);
     console.log(this.sdk);
@@ -111,7 +124,7 @@ export class Main extends Component<Props, State> {
     if (!slotNode) {
       return;
     }
-    slotNode.slotComponent.inputs. model = item.url;
+    slotNode.slotComponent.inputs.model = item.url;
     slotNode.modelComponent.inputs.localPosition.x = item.position.x;
     slotNode.modelComponent.inputs.localPosition.y = item.position.y;
     slotNode.modelComponent.inputs.localPosition.z = item.position.z;
@@ -123,7 +136,11 @@ export class Main extends Component<Props, State> {
     slotNode.modelComponent.inputs.localScale.z = item.scale.z;
   }
 
-  private handleOrientedBoxInteraction(node: ISceneNode, component: SceneComponent, interactionType: ComponentInteractionType) {
+  private handleOrientedBoxInteraction(
+    node: ISceneNode,
+    component: SceneComponent,
+    interactionType: ComponentInteractionType
+  ) {
     if (interactionType === ComponentInteractionType.CLICK) {
       // select this node
       for (const slot of this.slots) {
@@ -139,7 +156,7 @@ export class Main extends Component<Props, State> {
 
               this.setState({
                 slotNode: slot,
-              })
+              });
 
               slot.boxComponent.inputs.color = SelectedColor;
               slot.boxComponent.inputs.opacity = SelectedOpacity;
@@ -154,13 +171,15 @@ export class Main extends Component<Props, State> {
   render() {
     // Forward url params.
     const params = objectFromQuery();
-    params.m = params.m || 'j4RZx7ZGM6T';
+    params.m = params.m || '2dsQsoWwAEK';
     params.play = params.play || '1';
     params.qs = params.qs || '1';
     params.sr = params.sr || '-.15';
     params.ss = params.ss || '25';
 
-    const queryString = Object.keys(params).map((key) => key + '=' + params[key]).join('&');
+    const queryString = Object.keys(params)
+      .map((key) => key + '=' + params[key])
+      .join('&');
     const src = `./bundle/showcase.html?${queryString}`;
 
     let filteredItems: ItemDesc[] = [];
@@ -176,7 +195,7 @@ export class Main extends Component<Props, State> {
     }
 
     return (
-      <div className='main'>
+      <div className="main">
         <ItemList items={filteredItems} onSelected={this.handleListSelection}></ItemList>
         <Frame src={src}></Frame>
       </div>
@@ -185,7 +204,7 @@ export class Main extends Component<Props, State> {
 }
 
 // from cwf/modules/browser.ts
-export const objectFromQuery = (url?: string): {[key: string]: string} => {
+export const objectFromQuery = (url?: string): { [key: string]: string } => {
   const regex = /[#&?]([^=]+)=([^#&?]+)/g;
   url = url || window.location.href;
   const object: { [param: string]: string } = {};
