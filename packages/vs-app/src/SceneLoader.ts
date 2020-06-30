@@ -13,7 +13,6 @@ export class SceneLoader {
     }
 
     const scene = sidToScene.get(sid);
-    console.info(scene);
     if (!scene) {
       return;
     }
@@ -41,4 +40,5 @@ export class SceneLoader {
 
 const sidToScene: Map<string, any> = new Map();
 
-sidToScene.set('AAWs9eZ9ip6', scene);
+sidToScene.set('2dsQsoWwAEK', scene);
+// AAWs9eZ9ip6
