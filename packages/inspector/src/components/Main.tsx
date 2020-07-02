@@ -40,15 +40,15 @@ const useStyles = makeStyles({
     height: '80px',
   },
   button: {
-    height:'48px',
+    height: '48px',
     paddingTop: '10px',
     margin: '12px',
-  }
+  },
 });
 
 // Hmm, where have we seen this before
 export const saveBlobAsFile = (function () {
-  const URL = (window.URL || window.webkitURL);
+  const URL = window.URL || window.webkitURL;
   const a = document.createElement('a');
   document.body.appendChild(a);
   a.style.display = 'none';
@@ -59,16 +59,16 @@ export const saveBlobAsFile = (function () {
     a.click();
     URL.revokeObjectURL(url);
   };
-}());
+})();
 
-export default function SimpleMenu(props: { sdk: ISdk, scene: IScene }) {
+export default function SimpleMenu(props: { sdk: ISdk; scene: IScene }) {
   const [scene, setScene] = React.useState<ISceneNode[]>([]);
   const [selection, setSelection] = React.useState<ISceneNode>(null);
-  const widgetRef  = React.useRef(null);
+  const widgetRef = React.useRef(null);
 
   React.useEffect(() => {
     props.scene.objects.subscribe({
-      next: (v) => setScene(v)
+      next: (v) => setScene(v),
     });
   }, []);
 
@@ -80,18 +80,14 @@ export default function SimpleMenu(props: { sdk: ISdk, scene: IScene }) {
 
   const src = `./bundle/showcase.html?m=${modelSid}&play=1&qs=1`;
 
-  props.sdk.onChanged( async (theSdk: any)=> {
-    await Promise.all([
-      theSdk.Scene.register(gridType, makeGrid),
-      initComponents(theSdk),
-    ]);
+  props.sdk.onChanged(async (theSdk: any) => {
+    await Promise.all([theSdk.Scene.register(gridType, makeGrid), initComponents(theSdk)]);
 
     let objects: Object3D[] = [];
     try {
       objects = await theSdk.Scene.query(['scene']);
-    }
-    catch(e) {
-      console.log(e);
+    } catch (e) {
+      console.error(e);
     }
 
     const node = await theSdk.Scene.createNode();
@@ -100,11 +96,10 @@ export default function SimpleMenu(props: { sdk: ISdk, scene: IScene }) {
     });
     node.start();
 
-//    setScene(objects);
+    //    setScene(objects);
   });
 
   const itemSelected = (item: ISceneNode) => {
-    console.log(item);
     if (widgetRef.current && widgetRef.current.inputs.selection === item.obj3D) {
       setSelection(null);
       widgetRef.current.inputs.selection = null;
@@ -126,7 +121,7 @@ export default function SimpleMenu(props: { sdk: ISdk, scene: IScene }) {
 
   const onSave = async () => {
     const serialized = await props.scene.serialize();
-    const blob = new Blob([serialized], { type : 'text/plain;charset=utf-8' });
+    const blob = new Blob([serialized], { type: 'text/plain;charset=utf-8' });
     saveBlobAsFile(blob, 'scene.json');
   };
 
@@ -136,7 +131,9 @@ export default function SimpleMenu(props: { sdk: ISdk, scene: IScene }) {
       <div className={classes.toolbar}>
         <TransformToolbar selectionChanged={transformSelected}></TransformToolbar>
         <SceneDropZone cb={dropped}></SceneDropZone>
-        <Button onClick={() => onSave()} className={classes.button} variant='contained'>Save Scene</Button>
+        <Button onClick={() => onSave()} className={classes.button} variant="contained">
+          Save Scene
+        </Button>
       </div>
       <div className={classes.container}>
         <SceneView scene={scene} selectionChanged={itemSelected}></SceneView>
