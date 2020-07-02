@@ -1,8 +1,8 @@
-import * as React from "react";
+import * as React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { useDropzone } from "react-dropzone";
+import { useDropzone } from 'react-dropzone';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     width: '200px',
     height: '50px',
@@ -16,15 +16,14 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: '#fafafa',
     color: '#9dbd9d',
     outline: 'none',
-    transition: 'border .24s ease-in-out'
+    transition: 'border .24s ease-in-out',
   },
 }));
 
-export default function SceneDropZone(props: { cb: (serialized: string) => void}) {
-  const onDropHandler = function(acceptedFiles: File[]) {
+export default function SceneDropZone(props: { cb: (serialized: string) => void }) {
+  const onDropHandler = function (acceptedFiles: File[]) {
     const reader = new FileReader();
     reader.onload = async () => {
-      console.log(reader.result);
       props.cb(reader.result as string);
     };
 
@@ -33,20 +32,16 @@ export default function SceneDropZone(props: { cb: (serialized: string) => void}
 
   const onDrop = React.useCallback(onDropHandler, []);
 
-  const {isDragActive, getRootProps, getInputProps} = useDropzone({
+  const { isDragActive, getRootProps, getInputProps } = useDropzone({
     accept: 'application/json',
     onDrop,
   });
 
- const classes = useStyles({});
+  const classes = useStyles({});
   return (
     <div className={classes.root} {...getRootProps()}>
       <input {...getInputProps()} />
-      {
-        isDragActive ?
-          <p>Drop the files here ...</p> :
-          <p>Drag scene files here</p>
-      }
+      {isDragActive ? <p>Drop the files here ...</p> : <p>Drag scene files here</p>}
     </div>
   );
-};
+}

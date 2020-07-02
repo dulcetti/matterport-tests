@@ -1,4 +1,4 @@
-import { sdkKey } from "@mp/common";
+import { sdkKey } from '@mp/common';
 
 export interface ISdk {
   init(): void;
@@ -18,14 +18,13 @@ class Sdk implements ISdk {
 
   public init() {
     const that = this;
-    const checkIframe = function() {
+    const checkIframe = function () {
       var iframe = document.getElementById(that.elementId);
       if (iframe && (iframe as any).contentWindow.MP_SDK) {
         clearInterval(intervalId);
 
         (iframe as any).contentWindow.MP_SDK.connect(iframe, sdkKey, '3.2').then((sdk: any) => {
           that.sdk = sdk;
-          console.log(that.sdk);
           if (that.callback) {
             that.callback(sdk);
           }
@@ -40,4 +39,3 @@ class Sdk implements ISdk {
     this.callback = callback;
   }
 }
-

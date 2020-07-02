@@ -114,9 +114,6 @@ export class Main extends Component<Props, State> {
 
     this.slots = slots;
     await this.scene.load('2dsQsoWwAEK', findSlots);
-
-    console.log(this.scene);
-    console.log(this.sdk);
   }
 
   private handleListSelection(item: ItemDesc) {
