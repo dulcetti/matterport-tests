@@ -8,7 +8,4 @@ const appState = new AppState();
 appState.items = items;
 appState.slots = slots;
 
-ReactDom.render(
-  <Main appState={appState}/>,
-  document.getElementById("content")
-);
+ReactDom.render(<Main appState={appState} />, document.getElementById('content'));
