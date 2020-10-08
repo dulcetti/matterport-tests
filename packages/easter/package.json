@@ -11,11 +11,11 @@
     "@mp/bundle-sdk": "^1.0.0",
     "@mp/common": "^1.0.0",
     "@mp/core": "^1.0.0",
-    "@types/react-dom": "^16.9.6",
-    "phaser": "^3.22.0",
+    "@types/react-dom": "^16.9.8",
+    "phaser": "^3.24.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "three": "^0.115.0"
+    "three": "^0.121.1"
   },
   "devDependencies": {
     "@types/react": "^16.9.31",

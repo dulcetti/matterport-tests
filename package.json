@@ -1,10 +1,10 @@
 {
   "dependencies": {
     "awesome-typescript-loader": "^5.2.1",
-    "lerna": "^3.3.2",
-    "shelljs": "^0.8.3",
-    "typescript": "^3.7.2",
-    "webpack": "^4.42.0"
+    "lerna": "^3.22.1",
+    "shelljs": "^0.8.4",
+    "typescript": "^4.0.3",
+    "webpack": "^4.44.2"
   },
   "name": "sdk_examples",
   "version": "1.0.0",
@@ -28,7 +28,7 @@
   "workspaces": [
     "packages/*"
   ],
-  "config" : {
-    "bundle_version" : "3.0.35.31-25-g9563c7a6c"
+  "config": {
+    "bundle_version": "3.0.35.31-25-g9563c7a6c"
   }
 }

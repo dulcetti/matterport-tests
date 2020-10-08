@@ -3,17 +3,17 @@
   "version": "1.0.0",
   "main": "./src/index.ts",
   "dependencies": {
-    "@material-ui/core": "^4.9.2",
+    "@material-ui/core": "^4.11.0",
     "@mp/core": "^1.0.0",
-    "@types/hls.js": "^0.12.5",
-    "@types/react": "^16.9.19",
-    "@types/react-dom": "^16.9.5",
-    "css-loader": "^3.4.2",
-    "hls.js": "^0.13.2",
-    "react": "^16.12.0",
-    "style-loader": "^1.1.3",
-    "three": "^0.115.0",
-    "typescript": "^3.7.5"
+    "@types/hls.js": "^0.13.2",
+    "@types/react": "^16.9.51",
+    "@types/react-dom": "^16.9.8",
+    "css-loader": "^4.3.0",
+    "hls.js": "^0.14.13",
+    "react": "^16.13.1",
+    "style-loader": "^1.3.0",
+    "three": "^0.121.1",
+    "typescript": "^4.0.3"
   },
   "devDependencies": {
     "ts-loader": "^6.2.1"
